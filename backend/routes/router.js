@@ -7,10 +7,10 @@ const ReviewThree = require('../models/hrreview');
  
 // Add a new review
 router.post('/reviews', (req, res) => {
-  const { employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, floorNo, teamName, teamManager, priority, issueDate, description } = req.body;
+  const { employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, floorNo, teamName, teamManager, priority, issueDate, description, location } = req.body;
 
   const newReview = new Review({
-employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, floorNo, teamName, teamManager, priority, issueDate, description
+employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, floorNo, teamName, teamManager, priority, issueDate, description, location
   });
 
   newReview.save()
@@ -36,7 +36,7 @@ employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, 
     cc: 'parthiban@objectways.com',
     subject: `New Ticket from the employee ID ${req.body.employeeId}`,
     text: `Name: ${req.body.employeeName}\nEmail: ${req.body.emailId}\nMessage: ${req.body.description}`, // plain text body
-    html: `<p>Name: ${req.body.employeeName}</p><p>Email: ${req.body.emailId}</p><p>Unit No: ${req.body.unitNo}</p><p>Floor No: ${req.body.floorNo}</p><p>System No: ${req.body.systemNo}</p><p>Issue: ${req.body.systemType}</p><p>Message: ${req.body.description}</p>` // html body
+    html: `<p>Name: ${req.body.employeeName}</p><p>Email: ${req.body.emailId}</p><p>Unit No: ${req.body.unitNo}</p><p>Floor No: ${req.body.floorNo}</p><p>System No: ${req.body.systemNo}</p><p>Issue: ${req.body.systemType}</p><p>Message: ${req.body.description}</p><p>Location: ${req.body.location}</p>` // html body
   }
   transpoter.sendMail(mailOptions, function (error, info) {
     if (err) {
@@ -51,10 +51,10 @@ employeeName, employeeId, emailId, systemNo, systemType, systemTypetwo, unitNo, 
 
 // Add a new review
 router.post('/api/timechamp', (req, res) => {
-  const { employeeIdTwo, systemNoTwo, systemTypeTwo, unitNoTwo, floorNoTwo, emailID, teamNameTwo, priorityTwo, issueDateTwo, descriptionTwo, } = req.body;
+  const { employeeIdTwo, systemNoTwo, systemTypeTwo, unitNoTwo, floorNoTwo, emailID, teamNameTwo, priorityTwo, issueDateTwo, descriptionTwo, locationTwo } = req.body;
 
   const newReviewTwo = new ReviewTwo({
-   employeeIdTwo, systemNoTwo, systemTypeTwo, unitNoTwo, floorNoTwo, emailID, teamNameTwo, priorityTwo, issueDateTwo, descriptionTwo
+   employeeIdTwo, systemNoTwo, systemTypeTwo, unitNoTwo, floorNoTwo, emailID, teamNameTwo, priorityTwo, issueDateTwo, descriptionTwo, locationTwo
   });
 
   newReviewTwo.save()
@@ -80,7 +80,7 @@ router.post('/api/timechamp', (req, res) => {
     cc: 'loganathanvenkatesh@objectways.com',
     subject: `New Ticket from ${req.body.systemTypeTwo}`,
     text: `Team Name: ${req.body.systemTypeTwo}\nTeam Manager: ${req.body.systemNoTwo}\nMessage: ${req.body.descriptionTwo}`, // plain text body
-    html: `<p>Team Name: ${req.body.systemTypeTwo}</p><p>Team Manager: ${req.body.systemNoTwo}</p><p>Issue: ${req.body.employeeIdTwo}</p><p>Message: ${req.body.descriptionTwo}</p>` // html body
+    html: `<p>Team Name: ${req.body.systemTypeTwo}</p><p>Team Manager: ${req.body.systemNoTwo}</p><p>Issue: ${req.body.employeeIdTwo}</p><p>Message: ${req.body.descriptionTwo}</p><p>Message: ${req.body.locationTwo}</p>` // html body
   }
   transpoter.sendMail(mailOptions, function (error, info) {
     if (err) {
@@ -96,10 +96,10 @@ router.post('/api/timechamp', (req, res) => {
 
 // Add a new review
 router.post('/api/hrreview', (req, res) => {
-  const { employeeNameThree, employeeIdThree, systemNoThree, systemTypeThree, floorNoThree, teamNameThree, teamManagerThree, priorityThree, issueDateThree, descriptionThree } = req.body;
+  const { employeeNameThree, employeeIdThree, systemNoThree, systemTypeThree, floorNoThree, teamNameThree, teamManagerThree, priorityThree, issueDateThree, descriptionThree, locationThree } = req.body;
 
   const newReviewThree = new ReviewThree({
-    employeeNameThree, employeeIdThree, systemNoThree, systemTypeThree, floorNoThree, teamNameThree, teamManagerThree, priorityThree, issueDateThree, descriptionThree
+    employeeNameThree, employeeIdThree, systemNoThree, systemTypeThree, floorNoThree, teamNameThree, teamManagerThree, priorityThree, issueDateThree, descriptionThree, locationThree
   });
 
   newReviewThree.save()
@@ -126,7 +126,7 @@ router.post('/api/hrreview', (req, res) => {
     cc: 'parthiban@objectways.com',
     subject: `New Ticket from ${req.body.employeeNameThree}`,
     text: `Name: ${req.body.employeeNameThree}\nEmail: ${req.body.employeeIdThree}\nMessage: ${req.body.descriptionThree}`, // plain text body
-    html: `<p>Name: ${req.body.employeeNameThree}</p><p>Email: ${req.body.employeeIdThree}</p><p>Issue: ${req.body.floorNoThree}</p><p>Message: ${req.body.descriptionThree}</p>` // html body
+    html: `<p>Name: ${req.body.employeeNameThree}</p><p>Email: ${req.body.employeeIdThree}</p><p>Issue: ${req.body.floorNoThree}</p><p>Message: ${req.body.descriptionThree}</p><p>Message: ${req.body.locationThree}</p>` // html body
   }
   transpoter.sendMail(mailOptions, function (error, info) {
     if (err) {

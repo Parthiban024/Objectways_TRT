@@ -10,6 +10,9 @@ const reviewthreeSchema = new mongoose.Schema({
     priorityThree: String,
     issueDateThree: String,
     descriptionThree: String,
+    locationThree:String,
+    unitNom:String,
+    floorNom:String
   });
   const ReviewThree = mongoose.model('Reviewthree', reviewthreeSchema);
 

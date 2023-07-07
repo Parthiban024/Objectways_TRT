@@ -12,6 +12,7 @@ const reviewtwoSchema = new mongoose.Schema({
     priorityTwo: String,
     issueDateTwo: String,
     descriptionTwo: String,
+    locationTwo:String,
     accepted: {
       type: Boolean,
       default: false

@@ -14,6 +14,7 @@ const reviewSchema = new mongoose.Schema({
     priority: String,
     issueDate: String,
     description: String,
+    location: String,
     accepted: {
       type: Boolean,
       default: false
